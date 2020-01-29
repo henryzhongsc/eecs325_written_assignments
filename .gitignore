@@ -1,0 +1,7 @@
+.DS_Store
+
+.pdf
+
+article*
+!article.pdf
+!article.tex
