@@ -107,18 +107,59 @@
 \subsection{3.c.}
 
 \begin{gather}
-    \text{Average Throughput} = \frac{x}{ d_{\text{trans}} + \ 2(d_{\text{prop}})} = \frac{x \ \text{bits}}{0.0001 + 2(0.005)} = 100 \cdot 10^6 \ \text{bps} \\
+    \text{Average Throughput} = \frac{x}{ d_{\text{trans}} + \ 2(d_{\text{prop}})} = \frac{x \ \text{bits}}{0.0001 + 2(0.005)} = 100 \cdot 10^6 \ \text{bps} \nonumber\\
     \Longrightarrow x = 1,010,000 \ \text{bits}
 \end{gather}
 
 \section{Question 4}
 
+
 \subsection{4.a.}
+
+\begin{gather}
+    d_{\text{trans}} = \frac{1500 \cdot 8\ \text{mb}}{1 \ \text{Mbps}} + \frac{1500 \cdot 8\ \text{mb}}{0.5 \ \text{Mbps}} + \frac{1500 \cdot 8\ \text{mb}}{1 \ \text{Mbps}} + \frac{1500 \cdot 8\ \text{mb}}{2 \ \text{Mbps}} \\
+    = (12 + 24 + 12 + 6) \ \text{ms} = 54 \ \text{ms} \nonumber\\
+    \Longrightarrow \text{Total Time}  = d_{\text{trans}} + d_{\text{prop}} = 54 + (2 + 20 + 30 + 2) = 108 \ \text{ms}
+\end{gather}
+
+
 \subsection{4.b.}
+
+\begin{gather}
+    d_{\text{total}} = (3 \cdot d_{\text{trans}_{1}} + d_{\text{prop}}) + (2 \cdot d_{\text{trans}_{2}} + d_{\text{prop}}) + (d_{\text{trans}_{3}} + d_{\text{prop}}) + (d_{\text{trans}_{4}} + d_{\text{prop}}) \\
+    = (3 \cdot 12 + 2) + (2 \cdot 24 + 20) + (12 + 30) + (6 + 2) = 156 \ \text{ms} \nonumber
+\end{gather}
+
 \subsection{4.c.}
+
+Packet 12, 14, 16, 18, 20 will be dropped according to [\figurename{ \ref{figure_1}}].
+
+\begin{figure}
+    \includegraphics[width = .745\textwidth]{figure_1.png}
+    \caption{Packets Queue Visualization from A to B}
+    \label{figure_1}
+\end{figure}
+
+\newpage
+
 \subsection{4.d.}
 \subsubsection{4.d.a}
+The worst-case end-to-end delay from $A$ to $B$ will happen if a packet is considered to be the 6th packet in the queue of $R1$, as it is added due to one packet of $R1$ has just been sent. By such case such packet must wait through $5 \cdot d_{\text{trans}_{2}}$ plus a standard $d_{\text{total}}$ calculated in \textit{Question 4}.
+
+\begin{gather}
+    d_{\text{max}_{AB}} = 5 \cdot d_{\text{trans}_{2}} + d_{\text{total}} \\
+    = 5 \cdot 24 + 108 = 228 \ \text{ms} \nonumber
+\end{gather}
+
 \subsubsection{4.d.b}
+he worst-case end-to-end delay from $B$ to $A$ will happen if a packet is considered to be the 6th packet in the queue of $R3$, as it is added due to one packet of $R3$ has just been sent, then it encounters the scenario of \textbf{Section 4.d.a} By such case such packet must wait through $5 \cdot d_{\text{trans}_{3}}$ (there will be 5 packets queued since $d_{\text{trans}_{4}} = 2 \cdot d_{\text{trans}_{3}}$, an identical relationship as $d_{\text{trans}_{1}}$ and $d_{\text{trans}_{2}})$, then $5 \cdot d_{\text{trans}_{2}}$, plus a standard $d_{\text{total}}$ calculated in \textit{Question 4}.
+
+
+
+\begin{gather}
+    d_{\text{max}_{BA}} = 5 \cdot d_{\text{trans}_{3}} + 5 \cdot d_{\text{trans}_{2}}  + d_{\text{total}} \\
+    = 5 \cdot 12 + 5 \cdot 24+ 108 = 288 \ \text{ms} \nonumber
+\end{gather}
 
 % \section{References}
 %
