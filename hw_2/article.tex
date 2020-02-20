@@ -20,7 +20,7 @@
 \usepackage{enumitem}
 \usepackage{subfig}
 \usepackage{wasysym}
-\newcommand{\inlinecode}{\texttt}
+\newcommand{\ilc}{\texttt}
 \usepackage{etoolbox}
 \usepackage{algorithm}
 % \usepackage{algorithmic}
@@ -40,7 +40,7 @@
 
 \title{\textbf{EECS 325: Assignment 2}}
 
-\author{Shaochen (Henry) ZHONG, \inlinecode{sxz517} }
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517} }
 \date{Due and submitted on 02/20/2020 \\ EECS 325, Dr. WANG}
 \maketitle
 
@@ -131,6 +131,257 @@ If the DNS solver may query the requested information from its ISP, the addition
 
 \section{Question 3}
 
+\subsection{a.}
+\textbf{\ilc{dig com @198.41.0.4 A norecursive}}
+\begin{verbatim}
+HenryZsMacMR932:~ zhonghenry$ dig com @198.41.0.4 A norecursive
+
+; <<>> DiG 9.10.6 <<>> com @198.41.0.4 A norecursive
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 54149
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 13, ADDITIONAL: 27
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1472
+;; QUESTION SECTION:
+;com.				IN	A
+
+;; AUTHORITY SECTION:
+com.			172800	IN	NS	a.gtld-servers.net.
+com.			172800	IN	NS	b.gtld-servers.net.
+com.			172800	IN	NS	c.gtld-servers.net.
+com.			172800	IN	NS	d.gtld-servers.net.
+com.			172800	IN	NS	e.gtld-servers.net.
+com.			172800	IN	NS	f.gtld-servers.net.
+com.			172800	IN	NS	g.gtld-servers.net.
+com.			172800	IN	NS	h.gtld-servers.net.
+com.			172800	IN	NS	i.gtld-servers.net.
+com.			172800	IN	NS	j.gtld-servers.net.
+com.			172800	IN	NS	k.gtld-servers.net.
+com.			172800	IN	NS	l.gtld-servers.net.
+com.			172800	IN	NS	m.gtld-servers.net.
+
+;; ADDITIONAL SECTION:
+a.gtld-servers.net.	172800	IN	A	192.5.6.30
+b.gtld-servers.net.	172800	IN	A	192.33.14.30
+c.gtld-servers.net.	172800	IN	A	192.26.92.30
+d.gtld-servers.net.	172800	IN	A	192.31.80.30
+e.gtld-servers.net.	172800	IN	A	192.12.94.30
+f.gtld-servers.net.	172800	IN	A	192.35.51.30
+g.gtld-servers.net.	172800	IN	A	192.42.93.30
+h.gtld-servers.net.	172800	IN	A	192.54.112.30
+i.gtld-servers.net.	172800	IN	A	192.43.172.30
+j.gtld-servers.net.	172800	IN	A	192.48.79.30
+k.gtld-servers.net.	172800	IN	A	192.52.178.30
+l.gtld-servers.net.	172800	IN	A	192.41.162.30
+m.gtld-servers.net.	172800	IN	A	192.55.83.30
+a.gtld-servers.net.	172800	IN	AAAA	2001:503:a83e::2:30
+b.gtld-servers.net.	172800	IN	AAAA	2001:503:231d::2:30
+c.gtld-servers.net.	172800	IN	AAAA	2001:503:83eb::30
+d.gtld-servers.net.	172800	IN	AAAA	2001:500:856e::30
+e.gtld-servers.net.	172800	IN	AAAA	2001:502:1ca1::30
+f.gtld-servers.net.	172800	IN	AAAA	2001:503:d414::30
+g.gtld-servers.net.	172800	IN	AAAA	2001:503:eea3::30
+h.gtld-servers.net.	172800	IN	AAAA	2001:502:8cc::30
+i.gtld-servers.net.	172800	IN	AAAA	2001:503:39c1::30
+j.gtld-servers.net.	172800	IN	AAAA	2001:502:7094::30
+k.gtld-servers.net.	172800	IN	AAAA	2001:503:d2d::30
+l.gtld-servers.net.	172800	IN	AAAA	2001:500:d937::30
+m.gtld-servers.net.	172800	IN	AAAA	2001:501:b1f9::30
+
+;; Query time: 40 msec
+;; SERVER: 198.41.0.4#53(198.41.0.4)
+;; WHEN: Thu Feb 20 02:16:13 EST 2020
+;; MSG SIZE  rcvd: 828
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 62890
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;norecursive.			IN	A
+
+;; AUTHORITY SECTION:
+.			86383	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2020022001 1800 900 604800 86400
+
+;; Query time: 27 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Thu Feb 20 02:16:13 EST 2020
+;; MSG SIZE  rcvd: 115
+\end{verbatim}
+
+\textbf{\ilc{dig facebook.com @192.5.6.30 A norecursive}}
+\begin{verbatim}
+HenryZsMacMR932:~ zhonghenry$ dig facebook.com @192.5.6.30 A norecursive
+
+; <<>> DiG 9.10.6 <<>> facebook.com @192.5.6.30 A norecursive
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 19057
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 9
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;facebook.com.			IN	A
+
+;; AUTHORITY SECTION:
+facebook.com.		172800	IN	NS	a.ns.facebook.com.
+facebook.com.		172800	IN	NS	b.ns.facebook.com.
+facebook.com.		172800	IN	NS	c.ns.facebook.com.
+facebook.com.		172800	IN	NS	d.ns.facebook.com.
+
+;; ADDITIONAL SECTION:
+a.ns.facebook.com.	172800	IN	AAAA	2a03:2880:fffe:c:face:b00c::35
+a.ns.facebook.com.	172800	IN	A	69.171.239.12
+b.ns.facebook.com.	172800	IN	AAAA	2a03:2880:ffff:c:face:b00c::35
+b.ns.facebook.com.	172800	IN	A	69.171.255.12
+c.ns.facebook.com.	172800	IN	A	185.89.218.12
+c.ns.facebook.com.	172800	IN	AAAA	2a03:2880:f1fc:c:face:b00c::35
+d.ns.facebook.com.	172800	IN	A	185.89.219.12
+d.ns.facebook.com.	172800	IN	AAAA	2a03:2880:f1fd:c:face:b00c::35
+
+;; Query time: 47 msec
+;; SERVER: 192.5.6.30#53(192.5.6.30)
+;; WHEN: Thu Feb 20 02:17:08 EST 2020
+;; MSG SIZE  rcvd: 284
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 6067
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;norecursive.			IN	A
+
+;; AUTHORITY SECTION:
+.			86391	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2020022001 1800 900 604800 86400
+
+;; Query time: 24 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Thu Feb 20 02:17:08 EST 2020
+;; MSG SIZE  rcvd: 115
+\end{verbatim}
+
+\textbf{\ilc{dig www.facebook.com @69.171.239.12 A norecursive}}
+\begin{verbatim}
+HenryZsMacMR932:~ zhonghenry$ dig www.facebook.com @69.171.239.12 A norecursive
+
+; <<>> DiG 9.10.6 <<>> www.facebook.com @69.171.239.12 A norecursive
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49087
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;www.facebook.com.		IN	A
+
+;; ANSWER SECTION:
+www.facebook.com.	3600	IN	CNAME	star-mini.c10r.facebook.com.
+
+;; Query time: 14 msec
+;; SERVER: 69.171.239.12#53(69.171.239.12)
+;; WHEN: Thu Feb 20 02:18:38 EST 2020
+;; MSG SIZE  rcvd: 102
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 20239
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;norecursive.			IN	A
+
+;; AUTHORITY SECTION:
+.			86367	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2020022001 1800 900 604800 86400
+
+;; Query time: 24 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Thu Feb 20 02:18:38 EST 2020
+;; MSG SIZE  rcvd: 115
+\end{verbatim}
+
+\textbf{\ilc{dig star-mini.c10r.facebook.com @69.171.239.12 A nonrecursive}}
+\begin{verbatim}
+HenryZsMacMR932:~ zhonghenry$ dig star-mini.c10r.facebook.com @69.171.239.12 A nonrecursive
+
+; <<>> DiG 9.10.6 <<>> star-mini.c10r.facebook.com @69.171.239.12 A nonrecursive
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 28428
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 9
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;star-mini.c10r.facebook.com.	IN	A
+
+;; AUTHORITY SECTION:
+c10r.facebook.com.	3600	IN	NS	a.ns.c10r.facebook.com.
+c10r.facebook.com.	3600	IN	NS	c.ns.c10r.facebook.com.
+c10r.facebook.com.	3600	IN	NS	b.ns.c10r.facebook.com.
+c10r.facebook.com.	3600	IN	NS	d.ns.c10r.facebook.com.
+
+;; ADDITIONAL SECTION:
+a.ns.c10r.facebook.com.	3600	IN	AAAA	2a03:2880:f0fc:b:face:b00c::99
+a.ns.c10r.facebook.com.	3600	IN	A	129.134.30.11
+c.ns.c10r.facebook.com.	3600	IN	AAAA	2a03:2880:f1fc:b:face:b00c::99
+c.ns.c10r.facebook.com.	3600	IN	A	185.89.218.11
+b.ns.c10r.facebook.com.	3600	IN	AAAA	2a03:2880:f0fd:b:face:b00c::99
+b.ns.c10r.facebook.com.	3600	IN	A	129.134.31.11
+d.ns.c10r.facebook.com.	3600	IN	AAAA	2a03:2880:f1fd:b:face:b00c::99
+d.ns.c10r.facebook.com.	3600	IN	A	185.89.219.11
+
+;; Query time: 22 msec
+;; SERVER: 69.171.239.12#53(69.171.239.12)
+;; WHEN: Thu Feb 20 02:19:30 EST 2020
+;; MSG SIZE  rcvd: 620
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 58013
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;nonrecursive.			IN	A
+
+;; AUTHORITY SECTION:
+.			86382	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2020022001 1800 900 604800 86400
+
+;; Query time: 24 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Thu Feb 20 02:19:30 EST 2020
+;; MSG SIZE  rcvd: 116
+\end{verbatim}
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\subsection{b.}
+\subsubsection{b.(i)}
+\subsubsection{b.(ii)}
+\subsubsection{b.(iii)}
+
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\subsection{c.}
 % \section{References}
 %
 % \nocite{*}
