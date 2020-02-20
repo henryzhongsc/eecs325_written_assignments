@@ -371,11 +371,30 @@ d.ns.c10r.facebook.com.	3600	IN	A	185.89.219.11
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \subsection{b.}
+I worked with Yuhui ZHANG, and consulted TA regarding the following questions.
+
 \subsubsection{b.(i)}
+We need to insert the following records to the TLD server due to change from \ilc{.net} to \ilc{.com}
+\begin{enumerate}
+    \item \ilc{(foo.com, dns.foo.com, NS, TTL)}
+    \item \ilc{(dns.foo.com, dns.foo.com's IP address, A, TTL)}
+\end{enumerate}
+We will also need to insert the following record to the ADNS of \ilc{www.foo.com}:\\
+\indent \ilc{(www.foo.com, dns.foo.com's IP address, A, TTL)}
+
 \subsubsection{b.(ii)}
+We need to insert the following records to the DNS of \ilc{foo.net}:
+\begin{enumerate}
+    \item \ilc{(web.foo.net, dns.web.foo.net, NS, TTL)}
+    \item \ilc{(dns.web.foo.net, dns.web.foo.net's IP  address, A, TTL)}
+\end{enumerate}
+We will also need to insert the following record to the ADNS of \ilc{web.foo.net}:\\
+\indent \ilc{(web.foo.net, web.foo.net's IP address, A, TTL)}
+
 \subsubsection{b.(iii)}
 
-
+We need to change the IP record in the ADNS of \ilc{www.foo.net}: \\
+\indent \ilc{(www.foo.net, www.foo.net's new IP address, A, TTL)}
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
