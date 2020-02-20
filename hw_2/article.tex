@@ -382,6 +382,10 @@ d.ns.c10r.facebook.com.	3600	IN	A	185.89.219.11
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \subsection{c.}
+
+When an open DSN resolver does query, CDN will likely to allocate CDN servers which are close to the (open) DNS resolver, which might be far away from you -- the client. On the other hand, the by utilizing LDNS resolver, the CDN serves will allocate CDN servers which are physically close to you, and thus provide a better experience.
+
+
 % \section{References}
 %
 % \nocite{*}
