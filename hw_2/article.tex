@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\inlinecode}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+
+\begin{document}
+
+
+
+\title{\textbf{EECS 325: Assignment 2}}
+
+\author{Shaochen (Henry) ZHONG, \inlinecode{sxz517} }
+\date{Due and submitted on 02/20/2020 \\ EECS 325, Dr. WANG}
+\maketitle
+
+\section{Question 1}
+
+\subsection{a.}
+
+\begin{align*}
+    T(\text{base file}) &= \frac{10 \text{KB}}{10 \text{Mbps}} = \frac{10 \cdot 8 \text{Kb}}{10,000 \text{Kbps}} = 0.008 \text{s} \\
+    T(\text{object}) &= \frac{100 \text{KB}}{10 \text{Mbps}} = \frac{100 \cdot 8 \text{Kb}}{10,000 \text{Kbps}} = 0.08 \text{s}
+\end{align*}
+
+
+\begin{align*}
+    T(\text{non-persistent 1 TCP}) &= 2 \cdot \text{RTT} + T(\text{base file}) + 20 \cdot (2 \cdot \text{RTT} + T(\text{object})) \\
+    &= 2 \cdot 0.1s + 0.008s + 20 (2 \cdot 0.1s + 0.008s) \\
+    &= 5.808s
+\end{align*}
+
+
+\subsection{b.}
+
+
+\begin{align*}
+    C(\text{Bandwith per connection}) &= \frac{10 \text{Mbps}}{4} = \frac{10,000 \text{Kbps}}{4} = 2,500 \text{Kbps} \\
+    \Longrightarrow T(\text{object per connection}) &= \frac{100 \cdot 8 \text{Kb}}{2,500 \text{Kbps}} = 0.32 \text{s}
+\end{align*}
+
+\begin{align*}
+    T(\text{non-persistent 4 TCP}) &= 2 \cdot \text{RTT} + T(\text{base file}) + 20 \cdot \frac{1}{4} \cdot (2 \cdot \text{RTT} + T(\text{object per connection})) \\
+    &= 2 \cdot 0.1s + 0.008s + \frac{20}{4} (2 \cdot 0.1s + 0.32s) \\
+    &= 2.808s
+\end{align*}
+
+
+\subsection{c.}
+
+\begin{align*}
+    T(\text{persistent pipelined}) &= 2 \cdot \text{RTT} + T(\text{base file}) + RTT(\text{request}) + 20 \cdot T(\text{object}) \\
+    &= 0.2s + 0.008s + 0.1s + 20(0.08s) \\
+    &= 1.908s
+\end{align*}
+
+\subsection{d.}
+
+\begin{align*}
+    C(\text{Bandwith per connection}) &= \frac{10 \text{Mbps}}{2} = \frac{10,000 \text{Kbps}}{2} = 5,000 \text{Kbps}
+\end{align*}
+
+
+\begin{align*}
+    T(\text{persistent pipelined 2 TCP}) &= 2 \cdot \text{RTT} + T(\text{base file})  \\
+    &+ \frac{\text{number of objects}}{number of connections} \cdot (RTT(\text{request}) + T(\text{object})) \\
+    &= 0.2s + 0.008s + \frac{20}{2} \cdot (0.1s + 0.16s) \\
+    &= 2.808s
+\end{align*}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+\section{Question 2}
+
+\subsection{a.}
+\subsection{b.}
+\subsection{c.}
+\subsubsection{c.(i)}
+\subsubsection{c.(ii)}
+
+
+% \section{References}
+%
+% \nocite{*}
+% \raggedright
+% \bibliography{references.bib}
+% \bibliographystyle{plain}
+
+
+\end{document}
