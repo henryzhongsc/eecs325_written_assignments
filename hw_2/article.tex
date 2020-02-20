@@ -105,11 +105,31 @@
 \section{Question 2}
 
 \subsection{a.}
+
+\begin{align*}
+    D &= \frac{\text{avergae object size}}{\text{access link capacity}} = \frac{S}{C}\ \ \ \text{s}\\
+    \text{Average access delay} &= \frac{D}{1-DB} = \frac{\frac{S}{C}}{1-\frac{S}{C} \cdot A} = \frac{S}{C-SA}\ \ \ \text{s} \\
+    T_1 &= \text{Average access delay} + T = \frac{S}{C-SA} + T \ \ \ \text{s}
+\end{align*}
+
+
 \subsection{b.}
+
+\begin{align*}
+    \text{For} \ B &= (1-p) \cdot A \\
+    \text{Average access delay} &= \frac{D}{1-DB} = \frac{\frac{S}{C}}{1-(\frac{S}{C} \cdot (1-p) A)} = \frac{S}{C-(1-p) \cdot SA}\ \ \ \text{s} \\
+    T_2 &= \text{Average access delay} + T = \frac{S}{C-(1-p) \cdot SA} + T \ \ \ \text{s}
+\end{align*}
+
 \subsection{c.}
 \subsubsection{c.(i)}
-\subsubsection{c.(ii)}
+The total time will be $0$ second if the requested information is cached in the local DNS server. Otherwise, it willl be $R_1 + R_2 + R_3$ as the DNS resolver will have to query from the root, TLD, and authoritative DNS server.
 
+
+\subsubsection{c.(ii)}
+If the DNS solver may query the requested information from its ISP, the additional $R_0$ will be added to the delay. If not, the ISP will again have to go through the process of query from root, TLD, and authoritative DNS server, thus cause a delay of $R_0 + R_1 + R_2 + R_3$.
+
+\section{Question 3}
 
 % \section{References}
 %
