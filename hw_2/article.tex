@@ -66,13 +66,14 @@
 
 \begin{align*}
     C(\text{Bandwith per connection}) &= \frac{10 \text{Mbps}}{4} = \frac{10,000 \text{Kbps}}{4} = 2,500 \text{Kbps} \\
-    \Longrightarrow T(\text{object per connection}) &= \frac{100 \cdot 8 \text{Kb}}{2,500 \text{Kbps}} = 0.32 \text{s}
+    \Longrightarrow T(\text{object per connection}) &= \frac{100 \cdot 8 \text{Kb}}{2,500 \text{Kbps}} = 0.32 \text{s} \\
+    T(\text{base file}) &= \frac{10 \text{KB}}{2,500 \text{Kbps}} = \frac{10 \cdot 8 \text{Kb}}{2,500 \text{Kbps}} = 0.032 \text{s} \\
 \end{align*}
 
 \begin{align*}
     T(\text{non-persistent 4 TCP}) &= 2 \cdot \text{RTT} + T(\text{base file}) + 20 \cdot \frac{1}{4} \cdot (2 \cdot \text{RTT} + T(\text{object per connection})) \\
-    &= 2 \cdot 0.1s + 0.008s + \frac{20}{4} (2 \cdot 0.1s + 0.32s) \\
-    &= 2.808s
+    &= 2 \cdot 0.1s + 0.032s + \frac{20}{4} (2 \cdot 0.1s + 0.32s) \\
+    &= 2.832s
 \end{align*}
 
 
@@ -87,15 +88,17 @@
 \subsection{d.}
 
 \begin{align*}
-    C(\text{Bandwith per connection}) &= \frac{10 \text{Mbps}}{2} = \frac{10,000 \text{Kbps}}{2} = 5,000 \text{Kbps}
+    C(\text{Bandwith per connection}) &= \frac{10 \text{Mbps}}{2} = \frac{10,000 \text{Kbps}}{2} = 5,000 \text{Kbps} \\
+    T(\text{object}) &= \frac{100 \text{KB}}{5,000 \text{Kbps}} = \frac{100 \cdot 8 \text{Kb}}{5,000 \text{Kbps}} = 0.16 \text{s} \\
+    T(\text{base file}) &= \frac{10 \text{KB}}{5,000 \text{Kbps}} = \frac{10 \cdot 8 \text{Kb}}{5,000 \text{Kbps}} = 0.016 \text{s} \\
 \end{align*}
 
 
 \begin{align*}
     T(\text{persistent pipelined 2 TCP}) &= 2 \cdot \text{RTT} + T(\text{base file})  \\
-    &+ \frac{\text{number of objects}}{number of connections} \cdot (RTT(\text{request}) + T(\text{object})) \\
-    &= 0.2s + 0.008s + \frac{20}{2} \cdot (0.1s + 0.16s) \\
-    &= 2.808s
+    &+ \frac{\text{number of objects}}{\text{number of connections}} \cdot (RTT(\text{request}) + T(\text{object})) \\
+    &= 0.2s + 0.016s + \frac{20}{2} \cdot (0.1s + 0.16s) \\
+    &= 2.816s
 \end{align*}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
