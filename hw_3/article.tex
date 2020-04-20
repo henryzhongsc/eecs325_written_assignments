@@ -122,6 +122,39 @@ It reassemnbled at hosts.
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Question 4}
 
+\subsection{a.}
+
+\begin{table}[H]
+\center
+\begin{tabular}{cc}
+\textbf{Prefix}              & \textbf{Interface} \\
+1100000             & 0         \\
+11100001 00000000 & 1         \\
+11100001           & 2         \\
+other               & 3
+\end{tabular}
+\end{table}
+
+\subsection{b.}
+\begin{itemize}
+    \item (i) \textbf{Interface 3}, since it has no matching prefix with the above chart.
+    \item (ii) \textbf{Interface 1}, match with prefix \ilc{11100001 00000000}.
+    \item (iii) \textbf{Interface 2}, match with prefix \ilc{11100001}.
+\end{itemize}
+
+\subsection{c.}
+\begin{table}[H]
+\center
+\begin{tabular}{cc}
+\textbf{Prefix}              & \textbf{Interface} \\
+192.0.0.0 /7             & 0         \\
+225.0.0.0/16 & 1         \\
+225.0.0.0/8           & 2         \\
+other               & 3
+\end{tabular}
+\end{table}
+
+
 
 % \section{References}
 %
