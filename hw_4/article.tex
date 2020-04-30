@@ -80,7 +80,7 @@ $B$'s advertised distance to $F$ is $5$.
 Route  & \begin{tabular}[c]{@{}c@{}}After B's update\\ (distance, next-hop)\end{tabular} \\
 A to F & 5, D                                                                            \\
 C to F & 5, F                                                                            \\
-E to F & 6, D/F
+E to F & 6, D
 \end{tabular}
 \end{table}
 
@@ -102,7 +102,7 @@ Now all routers are following the correct shortest path, as in the next iteratio
 \subsection{(e)}
 \begin{enumerate}[label=(\arabic*)]
     \item 1st iteration, update $E$ to $F$ as $6, F$.
-    \item 2nd iteration, fill in $A$ to $F$, $B$ to $F$, update $C$ to $F$ as $5, F$, update $E$ to $F$ as $6, D/F$.
+    \item 2nd iteration, fill in $A$ to $F$, $B$ to $F$, update $C$ to $F$ as $5, F$, update $E$ to $F$ as $6, D$.
     \item 3rd iteration, update $B$ to $F$ as $6, C$.
     \item 4th iteration, no more update.
 \end{enumerate}
