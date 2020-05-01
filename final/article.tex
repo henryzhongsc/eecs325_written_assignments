@@ -1,0 +1,190 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilc}{\texttt}
+\usepackage{etoolbox}
+\usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning,arrows.meta,arrows}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+
+\begin{document}
+
+
+
+\title{\textbf{EECS 325: Take Home Final}}
+
+\author{Shaochen (Henry) ZHONG, \ilc{sxz517} }
+\date{Due and submitted on 05/01/2020 \\ EECS 325, Dr. WANG}
+\maketitle
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Single Choice Questions}
+
+
+\begin{enumerate}
+    \item
+    \begin{enumerate}[label=(\roman*)]
+        \item c
+        \item b
+        \item a
+        \item d
+    \end{enumerate}
+    \item d
+    \item c
+    \item c
+    \item e
+\end{enumerate}
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Short Answer Questions}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\subsection{1}
+
+It will operate between Alice's email client and Alice's outgoing mail server; also Alice's outgoing mail server and Bob's incoming mail server.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\subsection{2}
+IGP is for intra-AS routing, means navigating packets within the same AS; BGP is for inter-AS routing, means navigating packets across different AS.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\subsection{3}
+
+When \ilc{cwnd} exceeds \ilc{ssthresh} ($\frac{1}{2}$ of current \ilc{cwnd}).
+
+\noindent It is possible, when a timeout occurs or triple duplicate \ilc{ACK} is received (as some packets are getting through).
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\subsection{4}
+
+Yes.
+
+\noindent A router's number of IP Addresses is equal to the number of interface it has to connect to different subnets. There will be no same IP Address used for multiple different subnets.
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{IP Fragmentation}
+
+$\frac{2400 - 20}{700 - 20} = 3.5 \approx 4$. Thus, 4 fragmentations are generated.
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+\textbf{Seg Num} & \textbf{\begin{tabular}[c]{@{}c@{}}Length\\ (bytes)\end{tabular}} & \textbf{Flagflag} & \textbf{Offset} \\
+1                & 700                                                               & 1                 & 0               \\
+2                & 700                                                               & 1                 & 85              \\
+3                & 700                                                               & 1                 & 170             \\
+4                & 360                                                               & 0                 & 255
+\end{tabular}
+\end{table}
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{IP Addressing}
+
+\begin{itemize}
+    \item subnet 1: \ilc{223.1.13.0/25}
+    \item subnet 2: \ilc{223.1.13.128/26}
+    \item subnet 3: \ilc{223.1.13.192/26}
+\end{itemize}
+
+% \section{References}
+%
+% \nocite{*}
+% \raggedright
+% \bibliography{references.bib}
+% \bibliographystyle{plain}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Routing Algorithm}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccccccc}
+\textbf{S} & \textbf{N'} & \textbf{D(v),  p(v)} & \textbf{D(w), p(w)} & \textbf{D(x), p(x)} & \textbf{D(y), p(y)} & \textbf{D(z), p(z)} \\
+0          & u           & 2, u                 & $\infty$                 & 1, u                & $\infty$                 & $\infty$                 \\
+1          & ux          & 2, u                 & 4, x                & 1, u                & 2, x                & $\infty$                 \\
+2          & uxy         & 2, u                 & 3, y                & 1, u                & 2, x                & 4, y                \\
+3          & uxyv        & 2, u                 & 3, y                & 1, u                & 2, x                & 4, y                \\
+4          & uxyvw       & 2, u                 & 3, y                & 1, u                & 2, x                & 4, y                \\
+5          & uxyvwz      & 2, u                 & 3, y                & 1, u                & 2, x                & 4, y
+\end{tabular}
+\end{table}
+
+The least-cost path is: $u \rightarrow x  \rightarrow y  \rightarrow z $
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Data Link Layer}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\subsection{(a)}
+
+Known that $G = 10101$ and $r = 4$, now we have $\frac{D \cdot 2^r}{G} = \frac{110110101110000}{10101} = ... 0011$
+
+\noindent The CRC code will be \ilc{110110101110011}.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\subsection{(b)}
+No. Let the error be \ilc{10101}, we have $F(x) = 110110101110011$ and $G'(X) = x^4+x^2+1$. Then we must have $\frac{F(x)+G'(x)}{G(x)} = \frac{G'(x)}{G(x)} = ... 0$ in terms of the reminder. Thus, it cannot detect odd number of bit errors.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Multiple Access Protocol}
+
+For $B$ to be success at any slot we have $P(B) = p(1-p)^2$ since $A$ and $C$ should not be success at this slot.
+Thus, for $B$ to be success for the first time in $S_4$, we have $(1-P(B))^3 \cdot P(B) = (p(1-p)^2)^3 \cdot p(1-p)^2 = (1-p(1-p)^2)^3 \cdot p(1-p)^2$.
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Course Evaluation}
+
+(b)
+
+\end{document}
